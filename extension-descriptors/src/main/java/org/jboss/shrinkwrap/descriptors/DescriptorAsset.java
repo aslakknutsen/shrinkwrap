@@ -22,7 +22,6 @@ import java.io.InputStream;
 
 import org.jboss.shrinkwrap.api.asset.Asset;
 import org.jboss.shrinkwrap.descriptor.api.DescriptorDef;
-import org.jboss.shrinkwrap.descriptor.api.DescriptorExporter;
 
 /**
  * Converts a {@link DescriptorDef} to {@link InputStream}.
@@ -72,7 +71,7 @@ public class DescriptorAsset implements Asset
    public InputStream openStream()
    {
       ByteArrayOutputStream out = new ByteArrayOutputStream();
-      DescriptorExporter.to(descriptorDef.descriptor(), out);
+      descriptorDef.exportTo(out);
       return new ByteArrayInputStream(out.toByteArray());
    }
 
